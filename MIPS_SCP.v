@@ -12,16 +12,17 @@ module MIPS_SCP(input clk,
                 input reset);
                 
 wire [31:0] PC, Instr, ReadData, WriteData, ALUResult;
-wire RegDst,RegWrite, ALUSrc, Jump, JAL, JR, MemtoReg, PCSrc , Zero, MemWrite;
-wire [3:0] ALUControl;
+wire RegDst,RegWrite, ALUSrc, Jump, JAL, JR, MemtoReg, PCSrc , Zero, MemWrite, SysCall;
+wire [5:0] ALUControl;
 
 Datapath datapathcomp(clk, reset, RegDst,RegWrite, ALUSrc,Jump,JAL, JR,MemtoReg ,
-                     PCSrc,ALUControl,ReadData, Instr, PC, Zero, 
+                     PCSrc,ALUControl,ReadData, Instr, SysCall, PC, Zero, 
                      WriteData,ALUResult);
 
 
 Controlunit controller(Instr[31:26], Instr[5:0], Zero,MemtoReg,MemWrite,
-                        ALUSrc, RegDst, RegWrite, Jump, JAL, JR, PCSrc, ALUControl);
+                        ALUSrc, RegDst, RegWrite, Jump, JAL, JR, PCSrc, ALUControl,
+                        SysCall);
 
 
 ram dmem(clk,MemWrite,ALUResult, WriteData, ReadData);

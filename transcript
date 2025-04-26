@@ -1,0 +1,173 @@
+# Compile of adder.v was successful.
+# Compile of alu32.v was successful.
+# Compile of datapath.v failed with 1 errors.
+# Compile of decoder4.v was successful.
+# Compile of flopr_param.v was successful.
+# Compile of MIPS_SCP.v failed with 2 errors.
+# Compile of MIPS_SCP_tb.v was successful.
+# Compile of mipsalu.v was successful.
+# Compile of mux2.v was successful.
+# Compile of mux4.v was successful.
+# Compile of ram.v was successful.
+# Compile of regfile32.v was successful.
+# Compile of rom.v was successful.
+# Compile of signext.v was successful.
+# Compile of sl2.v was successful.
+# Compile of slt2.v was successful.
+# Compile of testalu.v was successful.
+# 17 compiles, 2 failed with 3 errors.
+# Compile of datapath.v was successful.
+# Compile of adder.v was successful.
+# Compile of alu32.v was successful.
+# Compile of datapath.v was successful.
+# Compile of decoder4.v was successful.
+# Compile of flopr_param.v was successful.
+# Compile of MIPS_SCP.v was successful.
+# Compile of MIPS_SCP_tb.v was successful.
+# Compile of mipsalu.v was successful.
+# Compile of mux2.v was successful.
+# Compile of mux4.v was successful.
+# Compile of ram.v was successful.
+# Compile of regfile32.v was successful.
+# Compile of rom.v was successful.
+# Compile of signext.v was successful.
+# Compile of sl2.v was successful.
+# Compile of slt2.v was successful.
+# Compile of testalu.v was successful.
+# Compile of control.v was successful.
+# 18 compiles, 0 failed with no errors.
+vsim -gui work.MIPS_SCP_tb
+# vsim -gui work.MIPS_SCP_tb 
+# Start time: 09:26:49 on May 27,2024
+# Loading work.MIPS_SCP_tb
+# Loading work.MIPS_SCP
+# Loading work.Datapath
+# Loading work.flopr_param
+# Loading work.adder
+# Loading work.slt2
+# Loading work.mux2
+# Loading work.registerfile32
+# Loading work.alu32
+# Loading work.signext
+# Loading work.Controlunit
+# Loading work.ram
+# Loading work.rom
+# Loading work.FA
+run -all
+# Compile of adder.v was successful.
+# Compile of alu32.v was successful.
+# Compile of datapath.v was successful.
+# Compile of decoder4.v was successful.
+# Compile of flopr_param.v was successful.
+# Compile of MIPS_SCP.v was successful.
+# Compile of MIPS_SCP_tb.v was successful.
+# Compile of mipsalu.v was successful.
+# Compile of mux2.v was successful.
+# Compile of mux4.v was successful.
+# Compile of ram.v was successful.
+# Compile of regfile32.v was successful.
+# Compile of rom.v was successful.
+# Compile of signext.v was successful.
+# Compile of sl2.v was successful.
+# Compile of testalu.v was successful.
+# Compile of control.v was successful.
+# 17 compiles, 0 failed with no errors.
+# Compile of rom.v was successful.
+# Compile of adder.v was successful.
+# Compile of alu32.v was successful.
+# Compile of datapath.v was successful.
+# Compile of decoder4.v was successful.
+# Compile of flopr_param.v was successful.
+# Compile of MIPS_SCP.v was successful.
+# Compile of MIPS_SCP_tb.v was successful.
+# Compile of mux2.v was successful.
+# Compile of mux4.v was successful.
+# Compile of ram.v was successful.
+# Compile of regfile32.v was successful.
+# Compile of rom.v was successful.
+# Compile of signext.v was successful.
+# Compile of sl2.v was successful.
+# Compile of control.v was successful.
+# 15 compiles, 0 failed with no errors.
+vsim -gui work.MIPS_SCP_tb
+# End time: 09:53:39 on May 27,2024, Elapsed time: 0:26:50
+# Errors: 0, Warnings: 16
+# vsim -gui work.MIPS_SCP_tb 
+# Start time: 09:53:39 on May 27,2024
+# Loading work.MIPS_SCP_tb
+# Loading work.MIPS_SCP
+# Loading work.Datapath
+# Loading work.flopr_param
+# Loading work.adder
+# Loading work.slt2
+# Loading work.mux2
+# Loading work.registerfile32
+# Loading work.alu32
+# Loading work.signext
+# Loading work.Controlunit
+# Loading work.ram
+# Loading work.rom
+# Loading work.FA
+run -all
+# ** Warning: (vsim-7) Failed to open readmem file "program1.txt" in read mode.
+# No such file or directory. (errno = ENOENT)    : D:/VerilogCPUs/MIPSVerilogWjalJR/rom.v(19)
+#    Time: 0 ns  Iteration: 0  Instance: /MIPS_SCP_tb/uut/imem
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Compile of adder.v was successful.
+# Compile of alu32.v was successful.
+# Compile of datapath.v was successful.
+# Compile of decoder4.v was successful.
+# Compile of flopr_param.v was successful.
+# Compile of MIPS_SCP.v was successful.
+# Compile of MIPS_SCP_tb.v was successful.
+# Compile of mux2.v was successful.
+# Compile of mux4.v was successful.
+# Compile of ram.v was successful.
+# Compile of regfile32.v was successful.
+# Compile of rom.v was successful.
+# Compile of signext.v was successful.
+# Compile of sl2.v was successful.
+# Compile of control.v was successful.
+# 15 compiles, 0 failed with no errors.
+vsim -gui work.MIPS_SCP_tb
+# End time: 09:57:01 on May 27,2024, Elapsed time: 0:03:22
+# Errors: 0, Warnings: 2
+# vsim -gui work.MIPS_SCP_tb 
+# Start time: 09:57:01 on May 27,2024
+# Loading work.MIPS_SCP_tb
+# Loading work.MIPS_SCP
+# Loading work.Datapath
+# Loading work.flopr_param
+# Loading work.adder
+# Loading work.slt2
+# Loading work.mux2
+# Loading work.registerfile32
+# Loading work.alu32
+# Loading work.signext
+# Loading work.Controlunit
+# Loading work.ram
+# Loading work.rom
+# Loading work.FA
+run -all
+quit -sim
+# End time: 10:11:11 on May 27,2024, Elapsed time: 0:14:10
+# Errors: 0, Warnings: 1
+vsim -gui work.MIPS_SCP_tb
+# vsim -gui work.MIPS_SCP_tb 
+# Start time: 10:11:19 on May 27,2024
+# Loading work.MIPS_SCP_tb
+# Loading work.MIPS_SCP
+# Loading work.Datapath
+# Loading work.flopr_param
+# Loading work.adder
+# Loading work.slt2
+# Loading work.mux2
+# Loading work.registerfile32
+# Loading work.alu32
+# Loading work.signext
+# Loading work.Controlunit
+# Loading work.ram
+# Loading work.rom
+# Loading work.FA
+run -all

@@ -1,0 +1,476 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA_pro/20.1/modelsim_ase/win32aloem
+vadder
+Z0 !s110 1716782201
+!i10b 1
+!s100 POdD8SeL7hLzOOf0@VaNZ2
+Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IRjjkiVk>]`EGOM8T?Ode?1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+Z3 dD:/VerilogCPUs/MIPSVerilogWjalJR
+Z4 w1705214447
+Z5 8adder.v
+Z6 Fadder.v
+!i122 764
+L0 6 16
+Z7 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z8 !s108 1716782201.000000
+Z9 !s107 control.v|rom.v|ram.v|sl2.v|signext.v|regfile32.v|mux4.v|mux2.v|flopr_param.v|alu32.v|adder.v|datapath.v|D:\VerilogCPUs\MIPSVerilogWjalJR\MIPS_SCP.v|
+Z10 !s90 -reportprogress|300|-work|work|-stats=none|D:\VerilogCPUs\MIPSVerilogWjalJR\MIPS_SCP.v|
+!i113 1
+Z11 o-work work
+Z12 tCvgOpt 0
+valu32
+R0
+!i10b 1
+!s100 Y:?I:5bmZ_MeYUmGcCOOY0
+R1
+IJhE[@n`6YSn3[AQBz;=I31
+R2
+R3
+w1705390394
+8alu32.v
+Falu32.v
+!i122 764
+L0 6 30
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+vControlunit
+Z13 !s110 1716782203
+!i10b 1
+!s100 VeCKI;]F<][8`3Oz1ZYmO1
+R1
+Im9YhbUYf7IKb1O[joOQXm2
+R2
+R3
+w1716779927
+8D:/VerilogCPUs/MIPSVerilogWjalJR/control.v
+FD:/VerilogCPUs/MIPSVerilogWjalJR/control.v
+!i122 773
+L0 7 131
+R7
+r1
+!s85 0
+31
+!s108 1716782203.000000
+!s107 D:/VerilogCPUs/MIPSVerilogWjalJR/control.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/VerilogCPUs/MIPSVerilogWjalJR/control.v|
+!i113 1
+R11
+R12
+n@controlunit
+vDatapath
+R0
+!i10b 1
+!s100 <P99VV[7R4][EPONg<`AN0
+R1
+IXFBNEM<9=`kkAe;W^>F;10
+R2
+R3
+w1716780277
+8datapath.v
+Fdatapath.v
+!i122 764
+L0 15 59
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@datapath
+vdecoder4
+R0
+!i10b 1
+!s100 k1PDc_jh3bdPICKz6AkfC2
+R1
+Ibi4FGH4@kUdG4cjmRceM<0
+R2
+R3
+w1704775437
+8D:/VerilogCPUs/MIPSVerilogWjalJR/decoder4.v
+FD:/VerilogCPUs/MIPSVerilogWjalJR/decoder4.v
+!i122 762
+L0 6 41
+R7
+r1
+!s85 0
+31
+R8
+!s107 D:/VerilogCPUs/MIPSVerilogWjalJR/decoder4.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/VerilogCPUs/MIPSVerilogWjalJR/decoder4.v|
+!i113 1
+R11
+R12
+vFA
+R0
+!i10b 1
+!s100 H=jfXY22PJTHJQJ3=4<L=2
+R1
+I85UW]EN8NCzgQbPOdB`<`3
+R2
+R3
+R4
+R5
+R6
+!i122 764
+L0 23 5
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@f@a
+vfb_adder
+!s110 1705387525
+!i10b 1
+!s100 78^g0]W]fao^bJRkOM67z1
+R1
+I_OmfalN93<6eQ8fFkBDl52
+R2
+dD:/Verilog Code MIPS
+w1705387519
+8D:/Verilog Code MIPS/fb_adder.v
+FD:/Verilog Code MIPS/fb_adder.v
+!i122 239
+L0 2 22
+R7
+r1
+!s85 0
+31
+!s108 1705387525.000000
+!s107 D:/Verilog Code MIPS/fb_adder.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/Verilog Code MIPS/fb_adder.v|
+!i113 1
+R11
+R12
+vflopr_param
+R0
+!i10b 1
+!s100 ==fG^OPB_[hTIdMzE4P=z3
+R1
+IZ7MKT3J:[OAFdj59goeck1
+R2
+R3
+w1704775476
+8flopr_param.v
+Fflopr_param.v
+!i122 764
+L0 6 13
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+vfour_bit_adder
+Z14 !s110 1716780645
+!i10b 1
+!s100 i1i;7?J6;XCFX<bNVDmXT3
+R1
+I7TROROXNKTfzlJCITAZVK0
+R2
+R3
+Z15 w1703998875
+Z16 8D:/VerilogCPUs/MIPSVerilogWjalJR/mipsalu.v
+Z17 FD:/VerilogCPUs/MIPSVerilogWjalJR/mipsalu.v
+!i122 733
+L0 1 15
+R7
+r1
+!s85 0
+31
+Z18 !s108 1716780645.000000
+Z19 !s107 D:/VerilogCPUs/MIPSVerilogWjalJR/mipsalu.v|
+Z20 !s90 -reportprogress|300|-work|work|-stats=none|D:/VerilogCPUs/MIPSVerilogWjalJR/mipsalu.v|
+!i113 1
+R11
+R12
+vfull_adder
+R14
+!i10b 1
+!s100 ER<TOQ@XLV2ndUFFoN>>U0
+R1
+IB8b5o_i?[3D4o8WTZ>=cV3
+R2
+R3
+R15
+R16
+R17
+!i122 733
+L0 17 8
+R7
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 1
+R11
+R12
+vMIPS_SCP
+R0
+!i10b 1
+!s100 ^B?L7lAIko`S4ja4Z=c6h0
+R1
+Ig4ZjcHI1W1L;Icj5@K>eN2
+R2
+R3
+w1705393772
+8D:\VerilogCPUs\MIPSVerilogWjalJR\MIPS_SCP.v
+FD:\VerilogCPUs\MIPSVerilogWjalJR\MIPS_SCP.v
+!i122 764
+L0 11 21
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@m@i@p@s_@s@c@p
+vMIPS_SCP_tb
+R0
+!i10b 1
+!s100 jXmgakjYg:Zfm]M]nMYMT3
+R1
+I?Knj0kimlzE1E4olQW?K]1
+R2
+R3
+w1704792782
+8D:/VerilogCPUs/MIPSVerilogWjalJR/MIPS_SCP_tb.v
+FD:/VerilogCPUs/MIPSVerilogWjalJR/MIPS_SCP_tb.v
+!i122 765
+L0 6 28
+R7
+r1
+!s85 0
+31
+R8
+!s107 D:/VerilogCPUs/MIPSVerilogWjalJR/MIPS_SCP_tb.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/VerilogCPUs/MIPSVerilogWjalJR/MIPS_SCP_tb.v|
+!i113 1
+R11
+R12
+n@m@i@p@s_@s@c@p_tb
+vmipsalu
+!s110 1716780646
+!i10b 1
+!s100 Uk7HWa?AFAEElUW6WnRPA2
+R1
+ISo<gJYe3ej@4[m^H34V7T3
+R2
+R3
+w1703999273
+8D:/VerilogCPUs/MIPSVerilogWjalJR/testalu.v
+FD:/VerilogCPUs/MIPSVerilogWjalJR/testalu.v
+!i122 741
+L0 1 22
+R7
+r1
+!s85 0
+31
+!s108 1716780646.000000
+!s107 D:/VerilogCPUs/MIPSVerilogWjalJR/testalu.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/VerilogCPUs/MIPSVerilogWjalJR/testalu.v|
+!i113 1
+R11
+R12
+vmux2
+Z21 !s110 1716782202
+!i10b 1
+!s100 cKn3GS0^`?]:SEii3GNzJ1
+R1
+I5Hl338GkA<bd6okWM8EAE0
+R2
+R3
+w1704776184
+8D:/VerilogCPUs/MIPSVerilogWjalJR/mux2.v
+FD:/VerilogCPUs/MIPSVerilogWjalJR/mux2.v
+!i122 766
+L0 6 12
+R7
+r1
+!s85 0
+31
+Z22 !s108 1716782202.000000
+!s107 D:/VerilogCPUs/MIPSVerilogWjalJR/mux2.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/VerilogCPUs/MIPSVerilogWjalJR/mux2.v|
+!i113 1
+R11
+R12
+vmux4
+R21
+!i10b 1
+!s100 K5ZiK[1HFMeGGATIz9djP2
+R1
+I63Xf:0NUO;nnIdX8nzYE:2
+R2
+R3
+w1704775545
+8D:/VerilogCPUs/MIPSVerilogWjalJR/mux4.v
+FD:/VerilogCPUs/MIPSVerilogWjalJR/mux4.v
+!i122 767
+L0 6 20
+R7
+r1
+!s85 0
+31
+R22
+!s107 D:/VerilogCPUs/MIPSVerilogWjalJR/mux4.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/VerilogCPUs/MIPSVerilogWjalJR/mux4.v|
+!i113 1
+R11
+R12
+vram
+R21
+!i10b 1
+!s100 d164]T7az:jD<k@Q>@;ce2
+R1
+IK2Te07Y?JHGgDaD66LWU<0
+R2
+R3
+Z23 w1704776186
+8D:/VerilogCPUs/MIPSVerilogWjalJR/ram.v
+FD:/VerilogCPUs/MIPSVerilogWjalJR/ram.v
+!i122 768
+L0 5 24
+R7
+r1
+!s85 0
+31
+R22
+!s107 D:/VerilogCPUs/MIPSVerilogWjalJR/ram.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/VerilogCPUs/MIPSVerilogWjalJR/ram.v|
+!i113 1
+R11
+R12
+vregisterfile32
+R21
+!i10b 1
+!s100 UPaY0dJ8W7nOe;gZ1:dgo3
+R1
+I8027Lb[lbYEaPWhlTRAdI2
+R2
+R3
+R23
+8D:/VerilogCPUs/MIPSVerilogWjalJR/regfile32.v
+FD:/VerilogCPUs/MIPSVerilogWjalJR/regfile32.v
+!i122 769
+L0 6 34
+R7
+r1
+!s85 0
+31
+R22
+!s107 D:/VerilogCPUs/MIPSVerilogWjalJR/regfile32.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/VerilogCPUs/MIPSVerilogWjalJR/regfile32.v|
+!i113 1
+R11
+R12
+vrom
+R21
+!i10b 1
+!s100 lSkN2^?4_j_YD<TTQaoo40
+R1
+IIO0T?Ki20]8GTRzSj41?U2
+R2
+R3
+w1716782196
+8D:\VerilogCPUs\MIPSVerilogWjalJR\rom.v
+FD:\VerilogCPUs\MIPSVerilogWjalJR\rom.v
+!i122 770
+L0 6 21
+R7
+r1
+!s85 0
+31
+R22
+!s107 D:\VerilogCPUs\MIPSVerilogWjalJR\rom.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:\VerilogCPUs\MIPSVerilogWjalJR\rom.v|
+!i113 1
+R11
+R12
+vsignext
+R21
+!i10b 1
+!s100 ]O6EBlmRCeeaS6VEg0jFT1
+R1
+Im[CRi4Z3O1ELORF=>BA5B0
+R2
+R3
+w1704775668
+8D:/VerilogCPUs/MIPSVerilogWjalJR/signext.v
+FD:/VerilogCPUs/MIPSVerilogWjalJR/signext.v
+!i122 771
+L0 6 7
+R7
+r1
+!s85 0
+31
+R22
+!s107 D:/VerilogCPUs/MIPSVerilogWjalJR/signext.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/VerilogCPUs/MIPSVerilogWjalJR/signext.v|
+!i113 1
+R11
+R12
+vslt2
+R13
+!i10b 1
+!s100 L`WcOzOS9d8K6WWdkoel<0
+R1
+IV>MRcPVBZ`zVTAbLZNFo>3
+R2
+R3
+w1704775892
+8D:/VerilogCPUs/MIPSVerilogWjalJR/sl2.v
+FD:/VerilogCPUs/MIPSVerilogWjalJR/sl2.v
+!i122 772
+L0 6 6
+R7
+r1
+!s85 0
+31
+R22
+!s107 D:/VerilogCPUs/MIPSVerilogWjalJR/sl2.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/VerilogCPUs/MIPSVerilogWjalJR/sl2.v|
+!i113 1
+R11
+R12

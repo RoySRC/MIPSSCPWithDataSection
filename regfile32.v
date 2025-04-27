@@ -29,10 +29,12 @@ initial begin
     
 always @(posedge clk)
 begin
-    register[0]=0;
+    register[0] = 0;
+    register[28] = 32'h10008000; // $gp
+    register[29] = 32'h7ffffffc; // $sp
     if(reset) for(i = 0; i < 32; i = i + 1) register[i] = 32'd0;
     else if (we)
-        if(wa != 0) register[wa]= wd;
+        if(wa != 0) register[wa] = wd;
     
 end
 

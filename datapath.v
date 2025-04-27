@@ -34,7 +34,9 @@ module Datapath#(
 	output [31:0] datatwo, 
 	output [31:0] ALUResult,
 	output [31:0] WriteData,    // Value to write to memory (dmem or heap)
-	output [31:0] MemAddr       // Address to access memory
+	output [31:0] MemAddr,       // Address to access memory
+	output [31:0] v0_data,
+	output [31:0] a0_data
 );
 
 
@@ -78,7 +80,8 @@ reg [31:0] heap_pointer;
 wire [31:0] final_writedata = (syscall && (dataone == 32'd9)) ? heap_pointer : Writedata;
 wire [4:0] final_writereg = (syscall && (dataone == 32'd9)) ? 5'd2 : writereg;
 
-
+assign v0_data = dataone; // $v0 is register 2
+assign a0_data = datatwo; // $a0 is register 4
 
 registerfile32 RF(
   clk,
@@ -105,36 +108,6 @@ assign WriteData = datatwo;    // value to be written to memory (either heap or 
 assign MemAddr   = ALUResult;  // address calculated
 
 
-// Syscall handling
-always @(posedge clk) begin
-	if (reset) begin
-		// This must be changed if the size of DMem increases, since we're using that
-		// as one physical memory
-        heap_pointer <= HEAP_BASE; // Heap starts here
-    end
-    if (syscall) begin
-        case (dataone)
-            32'd1: begin
-                $display("Syscall Print Integer: %h", datatwo);
-            end
-            32'd4: begin
-                $display("Syscall Print String Address: %h", datatwo);
-            end
-            32'd9: begin
-                $display("Syscall Memory Allocation, bytes requested: %d", datatwo);
-                heap_pointer <= heap_pointer + datatwo; // move heap up by requested size
-                // $v0 must be updated with old heap_pointer
-            end
-            32'd10: begin
-                $display("Syscall Exit");
-                $finish;
-            end
-            default: begin
-                $display("Unknown syscall code: %d", dataone);
-            end
-        endcase
-    end
-end
 
 
 endmodule

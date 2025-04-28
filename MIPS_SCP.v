@@ -18,6 +18,10 @@ wire [31:0] ReadDataHeap, ReadDataDmem, FinalReadData;
 wire [31:0] WriteData, ALUResult, MemAddr, datatwo;
 wire RegDst, RegWrite, ALUSrc, Jump, JAL, JR, MemtoReg, PCSrc, Zero, MemWrite, SysCall;
 wire [5:0] ALUControl;
+wire start_mult; // mult instruction wires
+wire mfhi_sel;   // mult instruction wires
+wire mflo_sel;    // mult instruction wires
+
 
 // --- Memory system wiring ---
 wire [31:0] heap_addr;
@@ -66,7 +70,8 @@ Datapath #(
     WriteData,
     MemAddr,
     v0_data, 
-    a0_data
+    a0_data,
+    start_mult, mfhi_sel, mflo_sel
 );
 
 // Controller
@@ -84,7 +89,8 @@ Controlunit controller(
     JR,
     PCSrc,
     ALUControl,
-    SysCall
+    SysCall,
+	start_mult, mfhi_sel, mflo_sel
 );
 
 // Data Memory (DMEM)
@@ -138,7 +144,7 @@ always @(posedge clk) begin
     if (SysCall) begin
         case (v0_data)
         	32'd1: begin
-                $display("Syscall Print Integer: %h", a0_data);
+                $display("Syscall Print Integer: %d", a0_data);
             end
             4: begin
                 addr = a0_data; // string address

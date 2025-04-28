@@ -3,6 +3,7 @@
 
 `include "adder.v"
 `include "alu32.v"
+`include "alu64.v"
 `include "flopr_param.v"
 `include "mux2.v"
 `include "mux4.v"
@@ -36,7 +37,10 @@ module Datapath#(
 	output [31:0] WriteData,    // Value to write to memory (dmem or heap)
 	output [31:0] MemAddr,       // Address to access memory
 	output [31:0] v0_data,
-	output [31:0] a0_data
+	output [31:0] a0_data,
+	input  start_mult, 
+	input  mfhi_sel, 
+	input  mflo_sel
 );
 
 
@@ -47,11 +51,12 @@ wire JSrc;
 
 
 // PC 
-flopr_param #(32) PCregister(clk,reset, PC,PCNext);
+flopr_param #(32) PCregister(clk,reset, PC, PCNext);
 adder #(32) pcadd4(PC, 32'd4 ,PCplus4);
 slt2 shifteradd2(extendedimm,extendedimmafter);
 adder #(32) pcaddsigned(extendedimmafter,PCplus4,PCbeforeBranch);
 mux2 #(32) branchmux(PCplus4 , PCbeforeBranch, PCSrc, PCBranch);
+
 
 assign JSrc = Jump | JAL;
 
@@ -77,7 +82,9 @@ wire [4:0] read_addr2 = syscall ? 5'd4 : Instr[20:16]; // if syscall, read $a0
 
 reg [31:0] heap_pointer;
 
-wire [31:0] final_writedata = (syscall && (dataone == 32'd9)) ? heap_pointer : Writedata;
+wire [31:0] final_writedata = (syscall && (dataone == 32'd9)) ? heap_pointer : 
+							  (mfhi_sel === 1'b1) ? HI :
+							  (mflo_sel === 1'b1) ? LO : Writedata;
 wire [4:0] final_writereg = (syscall && (dataone == 32'd9)) ? 5'd2 : writereg;
 
 assign v0_data = dataone; // $v0 is register 2
@@ -96,11 +103,31 @@ registerfile32 RF(
 ); 
 
 
-// ALU
+// ALU32
 
 alu32 alucomp(dataone, aluop2, ALUControl, Instr[10:6], ALUResult, ZeroFlag);
 signext immextention(Instr[15:0],extendedimm);
 mux2 #(32) aluop2sel(datatwo,extendedimm, ALUSrc, aluop2);
+
+
+// ALU 64
+
+wire [63:0] ALU64Result;
+wire ZeroFlag64;
+alu64 alu64comp(dataone, aluop2, ALUControl, Instr[10:6], ALU64Result, ZeroFlag64);
+mux2 #(32) zero64sel(ZeroFlag, ZeroFlag64, start_mult, ZeroFlag);
+
+
+reg [31:0] HI, LO;
+
+always @(posedge clk) begin
+    if (start_mult == 1'b1) begin
+        HI <= ALU64Result[63:32];
+        LO <= ALU64Result[31:0];
+    end
+end
+
+
 
 
 // Memory write path

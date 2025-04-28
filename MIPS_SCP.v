@@ -29,8 +29,9 @@ wire [31:0] heap_din;
 wire [31:0] heap_dout;
 wire heap_we;
 
-// Memory address detection
+// Memory address detection and size specification
 parameter [31:0] HEAP_BASE = 32'h10000000;
+parameter [31:0] HEAP_SIZE = 32'h000000fc;
 wire is_heap_addr = (MemAddr >= HEAP_BASE);
 
 assign heap_we = MemWrite & is_heap_addr;
@@ -47,7 +48,8 @@ assign FinalReadData = is_heap_addr ? heap_dout : ReadDataDmem;
 
 // Datapath
 Datapath #(
-    .HEAP_BASE(HEAP_BASE)
+    .HEAP_BASE(HEAP_BASE),
+    .HEAP_SIZE(HEAP_SIZE)
 ) datapathcomp(
     clk,
     reset,
@@ -94,7 +96,7 @@ Controlunit controller(
 );
 
 // Data Memory (DMEM)
-ram dmem(
+ram #(.depth(512)) dmem(
     .clk(clk),
     .we(dmem_we),
     .addr(MemAddr),
@@ -103,7 +105,7 @@ ram dmem(
 );
 
 // Heap Memory (HEAP_RAM)
-ram heap_ram(
+ram #(.depth(HEAP_SIZE)) heap_ram(
     .clk(clk),
     .we(heap_we),
     .addr(heap_addr),
@@ -144,7 +146,7 @@ always @(posedge clk) begin
     if (SysCall) begin
         case (v0_data)
         	32'd1: begin
-                $display("Syscall Print Integer: %d", a0_data);
+                $write("%d", a0_data);
             end
             4: begin
                 addr = a0_data; // string address
@@ -178,10 +180,10 @@ always @(posedge clk) begin
             end
             32'd10: begin
                 $display("Syscall Exit");
-                $finish;
+//                 $finish;
             end
             default: begin
-                $display("Unsupported syscall: %d", v0_data);
+//                 $display("Unsupported syscall: %d", v0_data);
                 // $finish;
             end
         endcase

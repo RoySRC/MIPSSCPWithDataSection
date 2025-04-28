@@ -14,7 +14,8 @@
 `timescale 1ns/1ns
 
 module Datapath#(
-    parameter [31:0] HEAP_BASE = 32'h00000080
+	parameter [31:0] HEAP_BASE = 32'h10000000,
+	parameter [31:0] HEAP_SIZE = 32'h000000fc
 )(
 	input clk,
 	input reset,
@@ -90,7 +91,7 @@ wire [4:0] final_writereg = (syscall && (dataone == 32'd9)) ? 5'd2 : writereg;
 assign v0_data = dataone; // $v0 is register 2
 assign a0_data = datatwo; // $a0 is register 4
 
-registerfile32 RF(
+registerfile32 #(.sp_fp_base(HEAP_BASE + HEAP_SIZE)) RF(
   clk,
   RegWrite, 
   reset, 

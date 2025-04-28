@@ -115,7 +115,7 @@ mux2 #(32) aluop2sel(datatwo,extendedimm, ALUSrc, aluop2);
 wire [63:0] ALU64Result;
 wire ZeroFlag64;
 alu64 alu64comp(dataone, aluop2, ALUControl, Instr[10:6], ALU64Result, ZeroFlag64);
-mux2 #(32) zero64sel(ZeroFlag, ZeroFlag64, start_mult, ZeroFlag);
+mux2 #(1) zero64sel(ZeroFlag, ZeroFlag64, start_mult, ZeroFlag);
 
 
 reg [31:0] HI, LO;

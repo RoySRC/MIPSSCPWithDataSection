@@ -150,7 +150,7 @@ always @(posedge clk) begin
             end
             4: begin
                 addr = a0_data; // string address
-                $write("Syscall Print String: ");
+//                 $write("Syscall Print String: ");
                 begin : PRINT_LOOP  // <<-- Name the block
 					while (1) begin
 						if (addr < HEAP_BASE) begin
@@ -171,7 +171,7 @@ always @(posedge clk) begin
 					end
 				end
                 
-                $write("\n");
+//                 $write("\n");
             end
             32'd9: begin
                 $display("Syscall Memory Allocation, bytes requested: %d", a0_data);
@@ -180,7 +180,8 @@ always @(posedge clk) begin
             end
             32'd10: begin
                 $display("Syscall Exit");
-//                 $finish;
+                dump_final_state();  // Call task to print everything
+                $finish;
             end
             default: begin
 //                 $display("Unsupported syscall: %d", v0_data);

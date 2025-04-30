@@ -53,7 +53,10 @@ always @(*) begin
                     6'b000100: ALUControl = 6'b001011;    // SLLV
                     6'b000110: ALUControl = 6'b001100;    // SRLV
                     6'b000111: ALUControl = 6'b001101;    // SRAV
-                    6'b001000: ALUControl = 6'b001111;    // JR
+                    6'b001000: begin					  // JR
+	                    ALUControl = 6'b001111;    
+	                    temp = 13'b0001100000010;    
+                    end
                     6'b001100: ALUControl = 6'b001100;	   // SYSCALL
                     6'b011000: begin  // MULT
 						ALUControl = 6'b000000; // Can be duplicated because ctrl goes to alu64
@@ -68,6 +71,11 @@ always @(*) begin
 						// control goes to alu32
 						ALUControl = 6'b000000; // Don't care
 						temp = 13'b0011100000000;
+					end
+					6'b001001: begin // JALR
+						$display("Executing JALR instruction.");
+						temp = 13'b0001000000110;  // JR = 1; RegWrite = 1; JAL = 1
+						ALUControl = 6'b001111;    // define as a pass-through or no-op in alu32
 					end
                 endcase
 
@@ -136,7 +144,8 @@ always @(*) begin
                         temp = 13'b0001000000100;  
                         ALUControl = 6'b000010; 
                     end 
-        6'b000011: begin                          // JR
+        6'b000011: begin                          // JR *why is this here? jr is an R-type
+                        $display("JR I-type. We have a problem.");
                         temp = 13'b0000000000010;  
                         ALUControl = 6'b001111; 
                     end 

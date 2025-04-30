@@ -63,7 +63,13 @@ assign JSrc = Jump | JAL;
 
 mux2 #(32) jumpmux(PCBranch, {PCplus4[31:28],Instr[25:0],2'b00 }, JSrc,PCNextIn);
 
-mux2 #(32) jRmux(PCNextIn, ALUResult,  JR,PCNext);
+mux2 #(32) jRmux(PCNextIn, ALUResult,  JR, PCNext);
+
+initial begin
+	$monitor("PC: %h | PCNextIn: %h | ALUResult: %h | JR: %h | PCNext: %h",
+	PC, PCNextIn, ALUResult, JR, PCNext
+	);
+end
 
 // Register File 
 

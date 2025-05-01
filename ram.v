@@ -40,16 +40,18 @@ end
     
 always @(posedge clk) begin
     if (we) begin
-      if (addr[1:0] != 2'b00)
+      if (addr[1:0] != 2'b00) begin
         $display("WARNING: Unaligned access at addr %08h", addr);
+        $finish;
+      end
       Dmem[addr[31:2]] <= din;
-      $display("INFO: RAM write - Addr: 0x%08X (word %0d), Data: 0x%08X", addr, addr[31:2], din);
+//       $display("INFO: RAM write - Addr: 0x%08X (word %0d), Data: 0x%08X", addr, addr[31:2], din);
     end
 end
 
 always @(*) begin
   dout_reg = Dmem[addr[31:2]];
-  $display("INFO: RAM read  - Addr: 0x%08X (word %0d), Data: 0x%08X", addr, addr[31:2], dout_reg);
+//   $display("INFO: RAM read  - Addr: 0x%08X (word %0d), Data: 0x%08X", addr, addr[31:2], dout_reg);
 end
 
 

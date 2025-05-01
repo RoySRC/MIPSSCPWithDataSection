@@ -18,6 +18,10 @@ wire [31:0] ReadDataHeap, ReadDataDmem, FinalReadData;
 wire [31:0] WriteData, ALUResult, MemAddr, datatwo;
 wire RegDst, RegWrite, ALUSrc, Jump, JAL, JR, MemtoReg, PCSrc, Zero, MemWrite, SysCall;
 wire [5:0] ALUControl;
+wire start_mult; // mult instruction wires
+wire mfhi_sel;   // mult instruction wires
+wire mflo_sel;    // mult instruction wires
+
 
 // --- Memory system wiring ---
 wire [31:0] heap_addr;
@@ -25,8 +29,9 @@ wire [31:0] heap_din;
 wire [31:0] heap_dout;
 wire heap_we;
 
-// Memory address detection
+// Memory address detection and size specification
 parameter [31:0] HEAP_BASE = 32'h10000000;
+parameter [31:0] HEAP_SIZE = 32'h000000fc;
 wire is_heap_addr = (MemAddr >= HEAP_BASE);
 
 assign heap_we = MemWrite & is_heap_addr;
@@ -43,7 +48,8 @@ assign FinalReadData = is_heap_addr ? heap_dout : ReadDataDmem;
 
 // Datapath
 Datapath #(
-    .HEAP_BASE(HEAP_BASE)
+    .HEAP_BASE(HEAP_BASE),
+    .HEAP_SIZE(HEAP_SIZE)
 ) datapathcomp(
     clk,
     reset,
@@ -66,7 +72,8 @@ Datapath #(
     WriteData,
     MemAddr,
     v0_data, 
-    a0_data
+    a0_data,
+    start_mult, mfhi_sel, mflo_sel
 );
 
 // Controller
@@ -84,11 +91,12 @@ Controlunit controller(
     JR,
     PCSrc,
     ALUControl,
-    SysCall
+    SysCall,
+	start_mult, mfhi_sel, mflo_sel
 );
 
 // Data Memory (DMEM)
-ram dmem(
+ram #(.depth(512)) dmem(
     .clk(clk),
     .we(dmem_we),
     .addr(MemAddr),
@@ -97,7 +105,7 @@ ram dmem(
 );
 
 // Heap Memory (HEAP_RAM)
-ram heap_ram(
+ram #(.depth(HEAP_SIZE)) heap_ram(
     .clk(clk),
     .we(heap_we),
     .addr(heap_addr),
@@ -138,11 +146,11 @@ always @(posedge clk) begin
     if (SysCall) begin
         case (v0_data)
         	32'd1: begin
-                $display("Syscall Print Integer: %h", a0_data);
+                $write("%d", a0_data);
             end
             4: begin
                 addr = a0_data; // string address
-                $write("Syscall Print String: ");
+//                 $write("Syscall Print String: ");
                 begin : PRINT_LOOP  // <<-- Name the block
 					while (1) begin
 						if (addr < HEAP_BASE) begin
@@ -163,7 +171,7 @@ always @(posedge clk) begin
 					end
 				end
                 
-                $write("\n");
+//                 $write("\n");
             end
             32'd9: begin
                 $display("Syscall Memory Allocation, bytes requested: %d", a0_data);
@@ -172,10 +180,11 @@ always @(posedge clk) begin
             end
             32'd10: begin
                 $display("Syscall Exit");
+                dump_final_state();  // Call task to print everything
                 $finish;
             end
             default: begin
-                $display("Unsupported syscall: %d", v0_data);
+//                 $display("Unsupported syscall: %d", v0_data);
                 // $finish;
             end
         endcase

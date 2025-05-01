@@ -45,30 +45,9 @@ module MIPS_SCP_tb;
 
 	#10000000; // Wait for writes to finish (adjust if needed)
 
-	$display("==== Final DMEM Contents ====");
-	for (i = 0; i < 64; i = i + 1) begin
-		$display("DMEM[0x%08X] = 0x%08X", 32'h10010000 + (i << 2), 
-		uut.dmem.Dmem[i]);
-	end
 
-	$display("");
-	$display("==== Final IMEM Contents ====");
-	for (i = 0; i < 64; i = i + 1) begin
-		$display("IMEM[0x%08X] = 0x%08X", i << 2, uut.imem.Imem[i]);
-	end
-	
-	$display("");
-	$display("==== Final HMEM Contents ====");
-	for (i = 0; i < 64; i = i + 1) begin
-		$display("HMEM[0x%08X] = 0x%08X", 32'h10000000 + (i << 2), 
-		uut.heap_ram.Dmem[i]);
-	end
+	dump_final_state();
 
-	$display("");
-	$display("==== Register Contents ====");
-	for (i = 0; i < 32; i = i + 1) begin
-		$display("R%0d = %h", i, uut.datapathcomp.RF.register[i]);
-	end
 	
 // 	$display("");
 // 	$display("==== Register Contents SYSCALL ====");
@@ -78,4 +57,34 @@ module MIPS_SCP_tb;
 
     $finish;
   end
+  
+  
+  task dump_final_state;
+    integer i;
+    begin
+        $display("\n==== Final DMEM Contents ====");
+        for (i = 0; i < 64; i = i + 1) begin
+            $display("DMEM[0x%08X] = 0x%08X", 32'h10010000 + (i << 2), 
+                uut.dmem.Dmem[i]);
+        end
+
+        $display("\n==== Final IMEM Contents ====");
+        for (i = 0; i < 64; i = i + 1) begin
+            $display("IMEM[0x%08X] = 0x%08X", i << 2, 
+                uut.imem.Imem[i]);
+        end
+
+        $display("\n==== Final HMEM Contents ====");
+        for (i = 0; i < 64; i = i + 1) begin
+            $display("HMEM[0x%08X] = 0x%08X", 32'h10000000 + (i << 2), 
+                uut.heap_ram.Dmem[i]);
+        end
+
+        $display("\n==== Register Contents ====");
+        for (i = 0; i < 32; i = i + 1) begin
+            $display("R%0d = %h", i, uut.datapathcomp.RF.register[i]);
+        end
+    end
+	endtask
+
 endmodule

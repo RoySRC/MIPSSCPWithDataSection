@@ -5,7 +5,7 @@
 
 module rom(addr,dout);
 
-parameter depth =256;
+parameter depth = 8192;
 parameter bits = 32;
 parameter width = 32;
 
